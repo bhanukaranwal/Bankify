@@ -70,3 +70,28 @@ export default NextAuth({
   },
   secret: process.env.NEXTAUTH_SECRET,
 });
+import GoogleProvider from "next-auth/providers/google";
+import FacebookProvider from "next-auth/providers/facebook";
+import AppleProvider from "next-auth/providers/apple";
+// ... keep CredentialsProvider & EmailProvider as before
+
+providers: [
+    CredentialsProvider({
+      // ... existing
+    }),
+    EmailProvider({
+      // ... existing
+    }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    }),
+    FacebookProvider({
+      clientId: process.env.FACEBOOK_CLIENT_ID,
+      clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+    }),
+    AppleProvider({
+      clientId: process.env.APPLE_ID,
+      clientSecret: process.env.APPLE_SECRET,
+    }),
+]
