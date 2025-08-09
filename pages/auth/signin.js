@@ -87,3 +87,16 @@ SignIn.getInitialProps = async () => {
   const providers = await getProviders();
   return { providers };
 };
+{Object.values(providers).map((provider) => {
+  if (provider.name === "Credentials" || provider.name === "Email") return null;
+  return (
+    <div key={provider.name} className="mt-4">
+      <button
+        onClick={() => signIn(provider.id, { callbackUrl: "/dashboard" })}
+        className="bg-gray-800 text-white w-full py-3 rounded"
+      >
+        Sign in with {provider.name}
+      </button>
+    </div>
+  );
+})}
